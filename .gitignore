@@ -1,2 +1,11 @@
 # Ignore virtual environment
 environment
+
+# Visual Studio Code
+.vscode
+
+# Compiled python
+*.pyc
+
+# pdf's used for testing
+*.pdf
