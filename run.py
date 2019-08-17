@@ -1,12 +1,9 @@
 from src.joiner import concatenate
+import src.app
+import wx
 
 
 if __name__ == "__main__":
-    paths = ["Chair Order.pdf", "Christmas Tickets.pdf", "Email Receipt.pdf"]
-    details = {
-        "Title": "Combined PDF Title",
-        "Author": "someone",
-        "Subject": "something",
-        "Creator": "pdfjoin",
-    }
-    concatenate(paths, "concatenated.pdf", details)
+    app = wx.App(False)
+    frame = src.app.MainFrame()
+    app.MainLoop()
