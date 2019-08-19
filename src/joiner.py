@@ -1,7 +1,7 @@
 from pdfrw import PdfReader, PdfWriter, IndirectPdfDict, PdfName
 
 
-def concatenate(input_paths, output_path, details):
+def concatenate(input_paths, output_path, details=None):
     """Given an ordered sequence of paths to pdf files, concatenate
     to the desired output path with the given details.
     
@@ -17,7 +17,8 @@ def concatenate(input_paths, output_path, details):
         writer.addpages(reader.pages)
 
     writer.trailer.Info = IndirectPdfDict()
-    for metadata, value in details.items():
-        writer.trailer.Info[PdfName(metadata)] = value
+    if details is not None:
+        for metadata, value in details.items():
+            writer.trailer.Info[PdfName(metadata)] = value
 
     writer.write(output_path)
