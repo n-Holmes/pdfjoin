@@ -9,3 +9,7 @@ environment
 
 # pdf's used for testing
 *.pdf
+
+# pyInstaller build and distribution files
+build
+dist
