@@ -2,12 +2,11 @@
 
 import os
 from stat import ST_CTIME, ST_MTIME, ST_SIZE
-from time import localtime, strftime
 
 from ObjectListView import ObjectListView, ColumnDefn
 import wx
 
-from .helpers import file_size_format
+from .helpers import file_size_format, time_format
 from .joiner import concatenate
 
 
@@ -99,8 +98,8 @@ class FilePanel(wx.Panel):
                 continue
 
             stats = os.stat(path)
-            creation_time = strftime("%d/%m/%Y %I:%M %p", localtime(stats[ST_CTIME]))
-            modified_time = strftime("%d/%m/%Y %I:%M %p", localtime(stats[ST_MTIME]))
+            creation_time = time_format(stats[ST_CTIME])
+            modified_time = time_format(stats[ST_MTIME])
             file_size = file_size_format(stats[ST_SIZE])
 
             self.file_list.append(
